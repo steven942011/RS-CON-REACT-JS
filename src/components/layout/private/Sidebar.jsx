@@ -1,11 +1,18 @@
 import React from 'react'
 import avatar from '../../../assets/img/user.png';
+import useAuth from '../../../Hooks/useAuth';
+import { Global } from '../../Helpers/Global';
 export const Sidebar = () => {
+    
+    const {auth}= useAuth();
+
+console.log(auth);
+
   return (
     <aside className="layout__aside">
 
     <header className="aside__header">
-        <h1 className="aside__title">Hola, Victor</h1>
+        <h1 className="aside__title">Hola, </h1>
     </header>
 
     <div className="aside__container">
@@ -14,11 +21,11 @@ export const Sidebar = () => {
 
             <div className="profile-info__general-info">
                 <div className="general-info__container-avatar">
-                    <img src={avatar} className="container-avatar__img" alt="Foto de perfil"/>
+                    <img src="" className="container-avatar__img" alt="Foto de perfil"/>
                 </div>
 
                 <div className="general-info__container-names">
-                    <a href="#" className="container-names__name">Milton Garcia</a>
+                    <a href="#" className="container-names__name"></a>
                     <p className="container-names__nickname">MiltWeb</p>
                 </div>
             </div>
