@@ -6,6 +6,7 @@ import { Register } from "../components/user/Register";
 import { PrivateLayout } from "../components/layout/private/PrivateLayout";
 import { Feeds } from "../components/publication/Feeds";
 import { AuthProvider } from "../components/context/AuthProvider";
+import { Logout } from "../components/user/Logout";
 export const Routing = () => {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ export const Routing = () => {
           <Route path="/social" element={<PrivateLayout />}>
             <Route index element={<Feeds />} />
             <Route path="feed" element={<Feeds />} />
+            <Route path="logout" element={<Logout/>}/>
           </Route>
           <Route
             path="*"

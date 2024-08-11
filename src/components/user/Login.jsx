@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "../../Hooks/useForm";
 import { Global } from "../Helpers/Global";
+import useAuth from "../../Hooks/useAuth";
 
 export const Login = () => {
   const [saved, setSaved] = useState("not_sended");
   const { form, changed } = useForm({});
   const [message, setMessage] = useState("");
+
+  const { setAuth } = useAuth();
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -22,7 +25,7 @@ export const Login = () => {
     });
 
     const data = await request.json();
-    console.log(data.message);
+    //  console.log(data.message);
 
     if (data.status == "success") {
       //persistir los datos en el navegador
@@ -31,6 +34,13 @@ export const Login = () => {
 
       setSaved("saved");
       setMessage(data.message);
+
+      //setear datos en el auth
+      setAuth(data.user);
+      //redireccion
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } else {
       setSaved("error");
       setMessage(data.message);
